@@ -31,7 +31,16 @@
     border-radius: 0px;
     background: #616161;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /* Scroll Bar Css Ends */
 
@@ -206,15 +215,15 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 2px;
-    background: rgb(45, 156, 219);
+    /*background: rgb(45, 156, 219);
     /* Old browsers */
-    background: -moz-linear-gradient(left, rgba(45, 156, 219, 1) 0%, rgba(52, 231, 255, 1) 76%, rgba(52, 231, 255, 1) 100%);
+    /*background: -moz-linear-gradient(left, rgba(45, 156, 219, 1) 0%, rgba(52, 231, 255, 1) 76%, rgba(52, 231, 255, 1) 100%);*/
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(45, 156, 219, 1) 0%, rgba(52, 231, 255, 1) 76%, rgba(52, 231, 255, 1) 100%);
+    /*background: -webkit-linear-gradient(left, rgba(45, 156, 219, 1) 0%, rgba(52, 231, 255, 1) 76%, rgba(52, 231, 255, 1) 100%);*/
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(45, 156, 219, 1) 0%, rgba(52, 231, 255, 1) 76%, rgba(52, 231, 255, 1) 100%);
+   /* background: linear-gradient(to right, rgba(45, 156, 219, 1) 0%, rgba(52, 231, 255, 1) 76%, rgba(52, 231, 255, 1) 100%);*/
     position: relative;
-    padding: 1px;
+    padding: 2px;
     margin-right: 20px;
 }
 
@@ -233,8 +242,8 @@ header {
     border-radius: 3px;
     position: absolute;
     content: '';
-    right: -5px;
-    top: 5px;
+    right: -0px;
+    top: -1px;
 }
 
 .pro-nm p {
@@ -889,4 +898,11 @@ a.bar-ic img {
     margin-left: -50px;
     margin-right: -50px;
    align-self: flex-end;    
+}
+#defaultCountdown{
+    text-transform: lowercase;
+    font-weight: 600
+}
+.ply-rn img{
+    width: 46px
 }

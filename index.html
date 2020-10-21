@@ -66,31 +66,31 @@
             <div class="banner-wrapper">
                 <div class="main-center-box">
                     <div id="wrap">
-                        <div id="showcase" class="noselect"> 
-                            <div class="space">
-                                <div class="main-goal">
-                                    <img class="cloud9-item" src="images/plnt1.png" alt=""> 
-                                </div>
-                            </div>
-                            <div class="space">
-                                <div class="main-goal">
-                                    <img class="cloud9-item" src="images/plnt2.png" alt=""> 
-                                </div>
-                            </div>
-                            <div class="space">
-                                <div class="main-goal">
-                                    <img class="cloud9-item" src="images/plnt3.png" alt=""> 
-                                </div>
-                            </div>
-                            <div class="space">
-                                <div class="main-goal">
-                                    <img class="cloud9-item" src="images/plnt4.png" alt=""> 
-                                </div>
-                            </div>
+                         <div id="showcase" class="noselect">
+                           <div class="space">
+                              <div class="main-goal">
+                                 <img class="cloud9-item" src="images/plnt1.png" data-name="LIGHT MATTER" data-staked="0.2" data-total-staked="1.9" data-earning="130" data-payout="13" data-left="Dark Matter" data-right="FRAG"> 
+                              </div>
+                           </div>
+                           <div class="space">
+                              <div class="main-goal">
+                                 <img class="cloud9-item" src="images/plnt2.png" data-name="Dark Matter" data-staked="0.32" data-total-staked="1.94" data-earning="1200" data-payout="10" data-left="VOID" data-right="LIGHT MATTER"> 
+                              </div>
+                           </div>
+                           <div class="space">
+                              <div class="main-goal">
+                                 <img class="cloud9-item" src="images/plnt3.png" data-name="VOID" data-staked="0.32" data-total-staked="1.94" data-earning="1200" data-payout="10" data-left="FRAG" data-right="DARK MATTER"> 
+                              </div>
+                           </div>
+                           <div class="space">
+                              <div class="main-goal">
+                                 <img class="cloud9-item" src="images/plnt4.png" data-name="FRAG" data-staked="0.32" data-total-staked="1.94" data-earning="1200" data-payout="10" data-left="LIGHT MATTER" data-right="VOID"> 
+                              </div>
+                           </div>
                         </div>
                         <div class="nav" class="noselect">
-                            <button class="left btn-cls"><span>venera <i class="fa fa-arrow-left"></i></span></button>
-                            <button class="right btn-cls"><span><i class="fa fa-arrow-right"></i> Mars</span></button>
+                            <button class="left btn-cls"><span><span id="arrow-left"></span> <i class="fa fa-arrow-left"></i></span></button>
+                            <button class="right btn-cls"><span><i class="fa fa-arrow-right"></i> <span id="arrow-right"></span></span></button>
                         </div>
                     </div>
                     <div class="build-info">
@@ -100,20 +100,35 @@
                                     <img src="images/graph1.png" alt="">
                                 </div>
                                 <div class="scr-bd">
-                                    <h4>0.2 <span>TRX</span></h4>
-                                    <p>income per hour</p>
+                                    <h4>
+                                      <div id="staked-amount">0.2</div>
+                                      <span>TRX</span></h4>
+                                    <p>STAKED AMOUNT</p>
                                 </div>
                                 <div class="scr-bd">
-                                    <h4>1.9 <span>TRX</span></h4>
-                                    <p>income per day</p>
+                                    <h4>
+                                      <div id="total-staked">0.2</div>
+                                      <span>TRX</span></h4>
+                                    <p>TOTAL STAKED AMOUNT</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-4">
                                 <div class="main-counter">
-                                    <h4>Saturn</h4>
-                                    <p>term of work: <span id="demo"></span></p>
-                                    <a href="#" class="btn-done">build <strong>133 TRX</strong></a>
-                                </div>
+                                 <div class="btn-done-stake-outer">
+                                    <input type="number" name=""  class="form-control">
+                                    <a href="#" class="btn-done btn-done-stake">Stake / unstake</strong></a>
+                                 </div>
+                                 <div>
+                                    <h4 class="detail-head">VOID</h4>
+                                    <p>next payout: <span id="defaultCountdown"></span></p>
+                                    <a href="#" class="btn-done">Withdraw</a>
+                                 </div>
+                                 <!-- <div class="btn-done-outer"> <a href="#" class="btn-done">build <strong>133 TRX</strong></a></div> -->
+                                 <div class="btn-done-stake-outer">
+                                    <input type="number" name=""  class="form-control">
+                                    <a href="#" class="btn-done btn-done-stake">Stake / unstake</strong></a>
+                                 </div>
+                              </div>
                             </div>
                             <div class="col-md-3 col-sm-4">
                                 <div class="right-bar">
@@ -121,12 +136,16 @@
                                         <img src="images/graph2.png" alt="">
                                     </div>
                                     <div class="scr-bd acrti-bx">
-                                        <h4>133 <span>TRX</span></h4>
-                                        <p>total coast</p>
+                                        <h4>
+                                          <div id="my-earning">0.2</div>
+                                          <span>TRX</span></h4>
+                                        <p> my earnings so far</p>
                                     </div>
                                     <div class="scr-bd">
-                                        <h4>13 <span>TRX</span></h4>
-                                        <p>profit per month</p>
+                                        <h4>
+                                          <div id="estimated-payout">0.2</div>
+                                          <span>TRX</span></h4>
+                                        <p>estimated payout</p>
                                     </div>
                                 </div>
                             </div>
@@ -396,7 +415,7 @@
         //wow animation js
         new WOW().init();
 
-        // //on click
+        //on click
         // $(function () {
         //     //toggle two classes on button element
         //     // $('.owl-item:first-child').on('click',function () {
@@ -437,57 +456,65 @@
         // });
 
 
-        // //galaxy slider
-        // $(function() {
-        //     var showcase = $("#showcase")
-        //     showcase.Cloud9Carousel( {
-        //         yPos: 42,
-        //         yRadius: 48,
-        //         mirrorOptions: {
-        //           gap: 18,
-        //           height: 0.5
-        //         },
-        //         buttonLeft: $(".nav > .left"),
-        //         buttonRight: $(".nav > .right"),
-        //         autoPlay: false,
-        //         bringToFront: false,
-        //         onRendered: showcaseUpdated,
-        //         onLoaded: function() {
-        //           showcase.css( 'visibility', 'visible' )
-        //           showcase.css( 'display', 'none' )
-        //           showcase.fadeIn( 2000 )
-        //         }
-        //     })
+        //galaxy slider
+        $(function() {
+            var showcase = $("#showcase")
+            showcase.Cloud9Carousel( {
+                yPos: 42,
+                yRadius: 48,
+                mirrorOptions: {
+                  gap: 18,
+                  height: 0.5
+                },
+                buttonLeft: $(".nav > .left"),
+                buttonRight: $(".nav > .right"),
+                autoPlay: false,
+                bringToFront: false,
+                onRendered: showcaseUpdated,
+                onLoaded: function() {
+                  showcase.css( 'visibility', 'visible' )
+                  showcase.css( 'display', 'none' )
+                  showcase.fadeIn( 2000 )
+                }
+            })
 
 
-        //     function showcaseUpdated( showcase ) {
-        //         var title = $('#item-title').html(
-        //             $(showcase.nearestItem()).attr( 'alt' )
-        //         )
+            function showcaseUpdated( showcase ) {
+                var title = $('#item-title').html(
+                    $(showcase.nearestItem()).attr( 'alt' )
+                )
+                // Every planet info changes on click
+                 $('.detail-head').html($('.main-goal.active').children("img").attr("data-name"));
+                $('#staked-amount').html($('.main-goal.active').children("img").attr("data-staked"));
+                $('#total-staked').html($('.main-goal.active').children("img").attr("data-total-staked"));
+                $('#my-earning').html($('.main-goal.active').children("img").attr("data-earning"));
+                $('#estimated-payout').html($('.main-goal.active').children("img").attr("data-payout"));
+                $('#arrow-left').html($('.main-goal.active').children("img").attr("data-left"));
+                $('#arrow-right').html($('.main-goal.active').children("img").attr("data-right"));
+                var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
+                    title.css('opacity', 0.5 + (0.5 * c))
+                }
 
-        //         var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
-        //             title.css('opacity', 0.5 + (0.5 * c))
-        //         }
 
+                // Simulate physical button click effect
+                $('.nav > button').click( function( e ) {
+                    var b = $(e.target).addClass( 'down' )
+                    setTimeout( function() { b.removeClass( 'down' ) }, 80 )
+                })
+                
 
-        //         // Simulate physical button click effect
-        //         $('.nav > button').click( function( e ) {
-        //             var b = $(e.target).addClass( 'down' )
-        //             setTimeout( function() { b.removeClass( 'down' ) }, 80 )
-        //         })
-
-        //         $(document).keydown( function( e ) {
-        //             // More codes: http://www.javascripter.net/faq/keycodes.htm
-        //             switch( e.keyCode ) {
-        //             /* left arrow */
-        //             case 37:
-        //             $('.nav > .left').click()
-        //             break
-        //             case 39:
-        //             $('.nav > .right').click()
-        //         }
-        //     })
-        // })
+                $(document).keydown( function( e ) {
+                    // More codes: http://www.javascripter.net/faq/keycodes.htm
+                    switch( e.keyCode ) {
+                    /* left arrow */
+                    case 37:
+                    $('.nav > .left').click()
+                    break
+                    case 39:
+                    $('.nav > .right').click()
+                }
+            })
+        })
 
         //galaxy slide script
         var _gaq = _gaq || [];
@@ -524,11 +551,11 @@
             
 
           // Output the result in an element with id="demo"
-          document.getElementById("demo").innerHTML = days + " DAYS ";
+          // document.getElementById("demo").innerHTML = days + " DAYS ";
           // If the count down is over, write some text 
           if (distance < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
+            // document.getElementById("demo").innerHTML = "EXPIRED";
           }
         }, 1000);
 
@@ -612,7 +639,13 @@
             });
         });
     </script>
-
+    <script src="js/jquery.plugin.min.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script>
+       $(function () {
+           $('#defaultCountdown').countdown({layout: '{hnn}h {mnn}m {snn}s', until: "+3h +38m +15s", format: 'HMS'});
+       });
+    </script>
 
 
 </body>

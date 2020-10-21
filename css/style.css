@@ -60,7 +60,16 @@
   background: #616161;
 }
 /* Scroll Bar Css Ends */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 /*Comman Css*/
 a:hover,
@@ -1267,3 +1276,69 @@ footer{
 /*.ps-carousel .items:last-child .cat-details{
   margin-right:  30vw
 }*/
+.scr-bd h4 div {
+  display: inline-block;
+}
+#defaultCountdown {
+    text-transform: lowercase;
+    font-weight: 600;
+}
+
+
+.build-info .row {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 30px
+}
+
+.scr-bd-lst {
+    margin-bottom: 0;
+    padding-bottom: 0
+}
+
+.btn-done-outer a {
+    margin-left: 10px
+}
+
+.btn-done-outer {
+    display: flex;
+}
+
+.btn-done-stake {
+    width: 200px;
+}
+.btn-done {
+    width: 200px;
+}
+
+.btn-done-stake-outer {
+    position: relative;
+    margin-top: auto;
+}
+
+.btn-done-stake-outer input {
+    /* position: absolute;
+    top: -38px;
+    left: 10px;
+    right: 0;*/
+    width: 200px;
+    height: 30px;
+    background-color: rgba(132, 213, 255, 0.2);
+    border: 1px solid rgba(132, 213, 255, 0.6);
+    margin-bottom: 20px
+}
+
+.main-counter {
+    display: flex;
+    justify-content: space-between;
+    margin-left: -50px;
+    margin-right: -50px;
+   align-self: flex-end;    
+}
+#defaultCountdown{
+    text-transform: lowercase;
+    font-weight: 600
+}
+.ply-rn img{
+    width: 46px
+}
