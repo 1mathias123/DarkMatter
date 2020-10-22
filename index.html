@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap4.min.css" />
 <!--     <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" /> -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?ver=1.01" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css?ver=1.01" />
     <link rel="icon" href="images/favicon.png" type="image/gif" sizes="10x16">
     <title>Home - DarkMatter</title>
 </head>
@@ -88,69 +88,12 @@
                               </div>
                            </div>
                         </div>
-                        <div class="nav" class="noselect">
+                       <!--  <div class="nav" class="noselect">
                             <button class="left btn-cls"><span><span id="arrow-left"></span> <i class="fa fa-arrow-left"></i></span></button>
                             <button class="right btn-cls"><span><i class="fa fa-arrow-right"></i> <span id="arrow-right"></span></span></button>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="build-info">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-4">
-                                <div class="graph-img">
-                                    <img src="images/graph1.png" alt="">
-                                </div>
-                                <div class="scr-bd">
-                                    <h4>
-                                      <div id="staked-amount">0.2</div>
-                                      <span>TRX</span></h4>
-                                    <p>STAKED AMOUNT</p>
-                                </div>
-                                <div class="scr-bd">
-                                    <h4>
-                                      <div id="total-staked">0.2</div>
-                                      <span>TRX</span></h4>
-                                    <p>TOTAL STAKED AMOUNT</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-4">
-                                <div class="main-counter">
-                                 <div class="btn-done-stake-outer">
-                                    <input type="number" name=""  class="form-control">
-                                    <a href="#" class="btn-done btn-done-stake">Stake / unstake</strong></a>
-                                 </div>
-                                 <div>
-                                    <h4 class="detail-head">VOID</h4>
-                                    <p>next payout: <span id="defaultCountdown"></span></p>
-                                    <a href="#" class="btn-done">Withdraw</a>
-                                 </div>
-                                 <!-- <div class="btn-done-outer"> <a href="#" class="btn-done">build <strong>133 TRX</strong></a></div> -->
-                                 <div class="btn-done-stake-outer">
-                                    <input type="number" name=""  class="form-control">
-                                    <a href="#" class="btn-done btn-done-stake">Stake / unstake</strong></a>
-                                 </div>
-                              </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <div class="right-bar">
-                                    <div class="graph-img">
-                                        <img src="images/graph2.png" alt="">
-                                    </div>
-                                    <div class="scr-bd acrti-bx">
-                                        <h4>
-                                          <div id="my-earning">0.2</div>
-                                          <span>TRX</span></h4>
-                                        <p> my earnings so far</p>
-                                    </div>
-                                    <div class="scr-bd">
-                                        <h4>
-                                          <div id="estimated-payout">0.2</div>
-                                          <span>TRX</span></h4>
-                                        <p>estimated payout</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -468,7 +411,9 @@
                 },
                 buttonLeft: $(".nav > .left"),
                 buttonRight: $(".nav > .right"),
-                autoPlay: false,
+                autoPlay: true,
+                smooth: true,
+                speed:2,
                 bringToFront: false,
                 onRendered: showcaseUpdated,
                 onLoaded: function() {

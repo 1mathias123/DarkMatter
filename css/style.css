@@ -586,7 +586,7 @@ button.btn-cls:active{
   background: linear-gradient(189.67deg, #2D9CDB 1.7%, rgba(52, 231, 255, 0.12) 39.63%, rgba(52, 231, 255, 0) 60.09%);
 }
 .main-goal.active .cloud9-item{
-  background-image: url(../images/green.svg);
+/*  background-image: url(../images/active-back-old.png);*/
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 20px;
@@ -594,9 +594,12 @@ button.btn-cls:active{
   z-index: 120 !important;
   position: relative;
 }
-.main-goal.active .cloud9-item:hover{
-  background-image: url(../images/blue.svg);
+.main-goal img{
+  transition: all 400ms linear;
 }
+/*.main-goal.active .cloud9-item:hover{
+  background-image: url(../images/blue.svg);
+}*/
 .build-info{
   background: linear-gradient(0deg, rgba(57, 208, 255, 0.18) 0%, rgba(82, 182, 255, 0) 100%);
   border-radius: 5px;
