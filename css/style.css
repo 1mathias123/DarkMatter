@@ -1179,9 +1179,9 @@ footer{
   width: 14px;
   height: 14px;
   margin-right: 10px;
-  background-image: url('../images/icons/fox-icon.png');
+  background-image: url('../images/icons/tron.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 14px;
   background-position: center;
 }
 .footer-nav .navbar-nav>li>.btn-main:after{
