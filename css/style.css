@@ -595,7 +595,7 @@ button.btn-cls:active{
   position: relative;
 }
 .main-goal img{
-  transition: all 400ms linear;
+/*  transition: all 400ms linear;*/
 }
 /*.main-goal.active .cloud9-item:hover{
   background-image: url(../images/blue.svg);
