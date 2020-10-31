@@ -97,6 +97,17 @@
 	/*index end*/
 }
 @media(min-width:1200px) and (max-width:1350px){
+	.navbar .navbar-nav>li{
+		width: auto;	
+	}
+	.nav-center {
+	    position: relative;
+	    transform: translateX(0%);
+	    left: 0%;
+	}
+	.navbar .navbar-collapse{
+		height: auto;
+	}
 	/*index*/
 	.categoreis-wrapper .owl-carousel .five-cl,
 	.categoreis-wrapper .owl-carousel .four-cl,
@@ -151,6 +162,17 @@
 	/*index end*/
 }
 @media(min-width:1025px) and (max-width:1199px){
+	.navbar .navbar-nav>li{
+		width: auto;	
+	}
+	.nav-center {
+	    position: relative;
+	    transform: translateX(0%);
+	    left: 0%;
+	}
+	.navbar .navbar-collapse{
+		height: auto;
+	}
 	/*header*/
 	.navbar .navbar-nav>li{margin-right: 15px;}
 	.navbar .navbar-nav>li>a{font-size: 12px;}
@@ -248,6 +270,17 @@
 	/*index end*/
 }
 @media(min-width:992px) and (max-width:1024px){
+	.navbar .navbar-nav>li{
+		width: auto;	
+	}
+	.nav-center {
+	    position: relative;
+	    transform: translateX(0%);
+	    left: 0%;
+	}
+	.navbar .navbar-collapse{
+		height: auto;
+	}
 	/*header*/
 	.navbar .navbar-nav>li{margin-right: 15px;}
 	.navbar .navbar-nav>li>a{font-size: 12px;}
@@ -345,6 +378,17 @@
 	/*index end*/
 }
 @media(min-width:768px) and (max-width:991px){
+	.navbar .navbar-nav>li{
+		width: auto;	
+	}
+	.nav-center {
+	    position: relative;
+	    transform: translateX(0%);
+	    left: 0%;
+	}
+	.navbar .navbar-collapse{
+		height: auto;
+	}
 	/*header*/
 	.navbar-brand img{width: 50px;}
 	.navbar-expand-md .navbar-nav .nav-link{padding: 40px 0;}
@@ -465,6 +509,17 @@
 	/*index end*/
 }
 @media(min-width:448px) and (max-width:767px){
+	.navbar .navbar-nav>li{
+		width: auto;	
+	}
+	.nav-center {
+	    position: relative;
+	    transform: translateX(0%);
+	    left: 0%;
+	}
+	.navbar .navbar-collapse{
+		height: auto;
+	}
 	/*header*/
 	.navbar{padding: 14px 0;}
 	.navbar-brand img{width: 50px;}
@@ -636,6 +691,17 @@
 	/*index end*/
 }
 @media(max-width:447px){
+	.navbar .navbar-nav>li{
+		width: auto;	
+	}
+	.nav-center {
+	    position: relative;
+	    transform: translateX(0%);
+	    left: 0%;
+	}
+	.navbar .navbar-collapse{
+		height: auto;
+	}
 	/*header*/
 	.navbar{padding: 14px 0;}
 	.navbar-brand img{width: 50px;}
