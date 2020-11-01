@@ -1240,3 +1240,9 @@ a.bar-ic img {
 .navbar-toggler{
     display: none;
 }
+header .col-lg-9{
+    position: unset;
+}
+.navbar{
+    position: unset !important;
+}
