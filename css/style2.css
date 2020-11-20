@@ -1246,3 +1246,41 @@ header .col-lg-9{
 .navbar{
     position: unset !important;
 }
+
+.growth-chart {
+   overflow: hidden;
+        transform: rotate(-20deg);
+
+}
+.growth-chart {
+    transform:rotate(-20deg)scale(0.9);
+    right:5px;
+}
+.growth-chart2{
+    margin-left: 100px
+}
+.growth-chart2 #canvas2{
+    position: relative;
+    right: 30px;    transform: scale(0.8);
+    
+}
+/*.growth-chart #canvas2 {
+    transform: scale(1);
+    transform-origin: center;
+    margin-left: 150px;
+    position: absolute;
+    bottom: -40px;
+}
+
+.growth-chart #canvas {
+    transform: scale(1);
+    transform-origin: left;
+    margin-left: 150px;
+    position: absolute;
+    bottom: -40px;
+}
+*/
+@keyframes leftgo {
+    0%{transform: translateX(0%) scale(.5);}
+    100%{transform: translateX(-100%) scale(.5);}
+}

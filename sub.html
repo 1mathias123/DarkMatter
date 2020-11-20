@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="css/bootstrap3.min.css" />
       <link rel="stylesheet" type="text/css" href="css/style2.css?ver=1.02" />
       <link rel="stylesheet" type="text/css" href="css/responsive2.css" />
+      <link rel="stylesheet" type="text/css" href="css/animate.css" />
       <link rel="icon" href="images/favicon.png" type="image/gif" sizes="10x16">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
       <title>Galaxy</title>
@@ -371,7 +372,12 @@
                         <div class="row">
                            <div class="col-md-3 col-sm-4">
                               <div class="graph-img">
-                                 <img src="images/graph1.png" alt="">
+<!--                                  <img src="images/graph1.png" alt=""> -->
+                                    <div class="growth-chart">
+                                       <canvas id="canvas" width="800" height="200" style="animation: 16s linear 0s infinite normal none running leftgo;">
+                                             [No canvas]
+                                      </canvas>
+                                    </div>
                               </div>
                               <div class="scr-bd">
                                  <h4>
@@ -409,7 +415,11 @@
                            <div class="col-md-3 col-sm-4">
                               <div class="right-bar">
                                  <div class="graph-img">
-                                    <img src="images/graph2.png" alt="">
+                                     <div class="growth-chart growth-chart2">
+                                       <canvas id="canvas2" width="800" height="200" style="animation: 16s linear 0s infinite normal none running leftgo;">
+                                             [No canvas]
+                                      </canvas>
+                                    </div>
                                  </div>
                                  <div class="scr-bd acrti-bx">
                                     <h4>
@@ -424,6 +434,8 @@
                                        <span class="token-selected">TRX</span>
                                     </h4>
                                     <p>estimated payout</p>
+                                    <input id="slider" type="range" min="0" max="800" step="1" value="200" style="display: none;" />
+                                    <input id="slider2" type="range" min="0" max="800" step="1" value="100" style="display: none;" />
                                  </div>
                               </div>
                            </div>
@@ -808,6 +820,180 @@ $(document).ready(function() {
   })
 
 })
+</script>
+
+
+
+
+
+<script>
+    // The curve
+function line1(){
+   var canvas = document.getElementById('canvas');
+   var ctx = canvas.getContext('2d');
+   var oy = 100;
+
+   function calc(x){
+       if (x > 700)
+       {
+           var j = oy + Math.sin(80+x*400)
+       }
+       else if (x > 600)
+       {
+           var j = oy + ((50 - (x - 600)/2)*Math.sin(80+x*400))
+       } else {
+           var j = oy + (50*Math.sin(80+x*400))
+       }
+       return j;
+   }
+
+
+
+   var slider=document.getElementById('slider');
+   function draw(getY,color) {
+     var grd = ctx.createLinearGradient(0, 0, 170, 0);
+     grd.addColorStop(0, "#2d9cdb");
+     grd.addColorStop(.5, "#33e1fd");
+     grd.addColorStop(1, "#44e3ff");
+     ctx.strokeStyle = grd;
+     ctx.beginPath();
+     var x=0; var y=0;
+     var first=true;
+     for (x=0; x<=800 && (x <= slider.value); x+=3){     
+         y= getY(x);
+         if(first){ ctx.moveTo(x,y); first=false;}
+         ctx.lineTo(x, y);
+     } 
+     ctx.stroke();
+     ctx.closePath();
+     newSprite(x, y)
+   }
+   function newSprite(mvx, mvy) {   
+       ctx.beginPath();
+       var grd = ctx.createLinearGradient(0, 0, 170, 0);
+       grd.addColorStop(0, "#fff");
+       grd.addColorStop(.5, "#fff");
+       grd.addColorStop(1, "#fff");
+       ctx.fillStyle = grd;
+       ctx.arc(mvx, mvy, 4, 0, Math.PI * 2, true);
+       ctx.closePath();
+       ctx.fill();
+   }
+   function change(){
+       canvas.width=canvas.width;
+       draw(calc,'#ED9FFF');
+   }
+
+
+   function animationline(){
+       $("#canvas").css('opacity', '0');
+       setTimeout(function(){
+           $("#canvas").removeAttr('style');
+           setTimeout(function(){
+               $("#canvas").css('animation', 'leftgo 16s infinite linear');
+           },100)
+           for (var i = 0; i < 800; i++)
+           {
+               let x = i;
+               setTimeout(function(){
+                   $(slider).val(x);
+                   change();
+                   if (x == 799)
+                   {
+                       $("#canvas").css('animation-play-state', 'paused');
+                       animationline();
+                   }
+               },10*x)
+           }
+       },500)
+       
+   }
+   animationline();
+}
+function line2(){
+   var canvas = document.getElementById('canvas2');
+   var ctx = canvas.getContext('2d');
+   var oy = 100;
+
+   function calc(x){
+       if (x > 700)
+       {
+           var j = oy + Math.sin(80+x*400)
+       }
+       else if (x > 600)
+       {
+           var j = oy + ((50 - (x - 600)/2)*Math.sin(80+x*400))
+       } else {
+           var j = oy + (50*Math.sin(80+x*400))
+       }
+       return j;
+   }
+
+
+
+   var slider=document.getElementById('slider2');
+   function draw(getY,color) {
+     var grd = ctx.createLinearGradient(0, 0, 170, 0);
+     grd.addColorStop(0, "#c9fa98");
+       grd.addColorStop(.5, "#d4fc88");
+       grd.addColorStop(1, "#d7ff83");
+     ctx.strokeStyle = grd;
+     ctx.beginPath();
+     var x=0; var y=0;
+     var first=true;
+     for (x=0; x<=800 && (x <= slider.value); x+=3){     
+         y= getY(x);
+         if(first){ ctx.moveTo(x,y); first=false;}
+         ctx.lineTo(x, y);
+     } 
+     ctx.stroke();
+     ctx.closePath();
+     newSprite(x, y)
+   }
+   function newSprite(mvx, mvy) {   
+       ctx.beginPath();
+       var grd = ctx.createLinearGradient(0, 0, 170, 0);
+       grd.addColorStop(0, "#fff");
+       grd.addColorStop(.5, "#fff");
+       grd.addColorStop(1, "#fff");
+       ctx.fillStyle = grd;
+       ctx.arc(mvx, mvy, 4, 0, Math.PI * 2, true);
+       ctx.closePath();
+       ctx.fill();
+   }
+   function change(){
+       canvas.width=canvas.width;
+       draw(calc,'#ED9FFF');
+   }
+
+
+   function animationline(){
+       $("#canvas2").css('opacity', '0');
+       setTimeout(function(){
+           $("#canvas2").removeAttr('style');
+           setTimeout(function(){
+               $("#canvas2").css('animation', 'leftgo 16s infinite linear');
+           },100)
+           for (var i = 0; i < 800; i++)
+           {
+               let x = i;
+               setTimeout(function(){
+                   $(slider).val(x);
+                   change();
+                   if (x == 799)
+                   {
+                       $("#canvas2").css('animation-play-state', 'paused');
+                       animationline();
+                   }
+               },10*x)
+           }
+       },500)
+       
+   }
+   animationline();
+}
+line1();
+line2()
 </script>
    </body>
 </html>
