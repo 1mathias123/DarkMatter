@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -730,6 +731,7 @@ $(document).ready(function() {
     const total = await stakeDataInstance.getTokenBalance().call()
     document.getElementById('token'+tokenSelected.num).setAttribute('data-total-staked', roundToTwoOrFour(parseFloat(total._hex, 16)/tokenSelected.decimals))
   }
+
   async function updateCycleRewards(tokenSelected) {
     stakeHandlerInstance = await tronWeb.contract().at(tokenSelected.stakeHandlerAddress)
     const total = await stakeHandlerInstance.calculateMyCurrentCycleRewards().call()
@@ -743,18 +745,18 @@ $(document).ready(function() {
   }
 
   async function updateTotal(){
-      lightmatterContract = await tronWeb.contract().at(config_json['LIGHTMATTER'].stakeHandlerAddress)
-      darkmatterContract = await tronWeb.contract().at(config_json['DARKMATTER'].stakeHandlerAddress)
-      voidContract = await tronWeb.contract().at(config_json['VOID'].stakeHandlerAddress)
-      fragContract = await tronWeb.contract().at(config_json['FRAG'].stakeHandlerAddress)
-      const totalLight = await stakeHandlerInstance.reservedPot().call()
-      const totalDark = await stakeHandlerInstance.reservedPot().call()
-      const totalVoid = await stakeHandlerInstance.reservedPot().call()
-      const totalFrag = await stakeHandlerInstance.reservedPot().call()
-      document.getElementById('lmh-total').innerHTML = roundToTwoOrFour(parseFloat(totalLight._hex, 16)/config_json['LIGHTMATTER'].decimals)
-      document.getElementById('dmd-total').innerHTML = roundToTwoOrFour(parseFloat(totalDark._hex, 16)/config_json['DARKMATTER'].decimals)
-      document.getElementById('void-total').innerHTML = roundToTwoOrFour(parseFloat(totalVoid._hex, 16)/config_json['VOID'].decimals)
-      document.getElementById('frag-total').innerHTML = roundToTwoOrFour(parseFloat(totalFrag._hex, 16)/config_json['FRAG'].decimals)
+      if(config_json['LIGHTMATTER']) lightmatterContract = await tronWeb.contract().at(config_json['LIGHTMATTER'].stakeHandlerAddress)
+      if(config_json['DARKMATTER']) darkmatterContract = await tronWeb.contract().at(config_json['DARKMATTER'].stakeHandlerAddress)
+      if(config_json['VOID']) voidContract = await tronWeb.contract().at(config_json['VOID'].stakeHandlerAddress)
+      if(config_json['FRAG']) fragContract = await tronWeb.contract().at(config_json['FRAG'].stakeHandlerAddress)
+      const totalLight = await stakeHandlerInstance.getAvailableBalance().call()
+      const totalDark = await stakeHandlerInstance.getAvailableBalance().call()
+      const totalVoid = await stakeHandlerInstance.getAvailableBalance().call()
+      const totalFrag = await stakeHandlerInstance.getAvailableBalance().call()
+      if(config_json['LIGHTMATTER']) document.getElementById('lmh-total').innerHTML = roundToTwoOrFour(parseFloat(totalLight._hex, 16)/config_json['LIGHTMATTER'].decimals)
+      if(config_json['DARKMATTER']) document.getElementById('dmd-total').innerHTML = roundToTwoOrFour(parseFloat(totalDark._hex, 16)/config_json['DARKMATTER'].decimals)
+      if(config_json['VOID']) document.getElementById('void-total').innerHTML = roundToTwoOrFour(parseFloat(totalVoid._hex, 16)/config_json['VOID'].decimals)
+      if(config_json['FRAG']) document.getElementById('frag-total').innerHTML = roundToTwoOrFour(parseFloat(totalFrag._hex, 16)/config_json['FRAG'].decimals)
   }
   /*
   async function updateNextPayout() {
