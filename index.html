@@ -70,23 +70,24 @@
                          <div id="showcase" class="noselect">
                            <div class="space">
                               <div class="main-goal">
-                                 <img class="cloud9-item" src="images/plnt1.png" data-name="LIGHT MATTER" data-staked="0.2" data-total-staked="1.9" data-earning="130" data-payout="13" data-left="Dark Matter" data-right="FRAG">
+                                 <img class="cloud9-item" id="token2" src="images/plnt2.png" data-name="DARK MATTER" data-staked="0.00" data-total-staked="0.00" data-earning="0.00" data-payout="0.00" data-left="LIGHT MATTER" data-right="FRAG" token="DMD">
                               </div>
                            </div>
                            <div class="space">
                               <div class="main-goal">
-                                 <img class="cloud9-item" src="images/plnt2.png" data-name="Dark Matter" data-staked="0.32" data-total-staked="1.94" data-earning="1200" data-payout="10" data-left="VOID" data-right="LIGHT MATTER">
+                                  <img class="cloud9-item" id="token1" src="images/plnt1.png" data-name="LIGHT MATTER" data-staked="0.00" data-total-staked="0.00" data-earning="0.00" data-payout="0.00" data-left="VOID" data-right="DARK MATTER" token="LMH">
                               </div>
                            </div>
+
                            <div class="space">
-                              <div class="main-goal">
-                                 <img class="cloud9-item" src="images/plnt3.png" data-name="VOID" data-staked="0.32" data-total-staked="1.94" data-earning="1200" data-payout="10" data-left="FRAG" data-right="DARK MATTER">
-                              </div>
+                             <div class="main-goal">
+                                <img class="cloud9-item" id="token3" src="images/plnt3.png" data-name="VOID" data-staked="0.00" data-total-staked="0.00" data-earning="0.00" data-payout="0.00" data-left="FRAG" data-right="LIGHT MATTER" token="VOID">
+                             </div>
                            </div>
                            <div class="space">
-                              <div class="main-goal">
-                                 <img class="cloud9-item" src="images/plnt4.png" data-name="FRAG" data-staked="0.32" data-total-staked="1.94" data-earning="1200" data-payout="10" data-left="LIGHT MATTER" data-right="VOID">
-                              </div>
+                             <div class="main-goal">
+                                <img class="cloud9-item" id="token4" src="images/plnt4.png" data-name="FRAG" data-staked="0.00" data-total-staked="0.00" data-earning="0.00" data-payout="0.00" data-left="DARK MATTER" data-right="VOID" token="FRAG">
+                             </div>
                            </div>
                         </div>
                         <div class="nav" class="noselect">
@@ -604,7 +605,41 @@
            $('#defaultCountdown').countdown({layout: '{hnn}h {mnn}m {snn}s', until: "+3h +38m +15s", format: 'HMS'});
        });
        $(document).ready(()=>{
+         const config_json = {
+         /*  LIGHTMATTER: {
+             num:1,
+             tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
+             stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
+             stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
+             decimals: 1e6,
+           },*/
+           DARKMATTER: {
+             num:2,
+             tokenAddress: 'TXhv2baQ2q3TWerrwBiXjj27js9QocJFU9',
+             stakeDataAddress: 'TVMUd5yT9ZgxfCKm9dvKG3jmFAXYsMvyon',
+             stakeHandlerAddress: 'TD1sKYdUHKnR1V3UeVXxUB7QbD1mHTMkJG',
+             decimals: 1e6,
+           },
+           /*VOID: {
+             num:3,
+             tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
+             stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
+             stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
+             decimals: 1e6,
+           },
+           FRAG: {
+             num:4,
+             tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
+             stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
+             stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
+             decimals: 1e6,
+           },
+           */
+         }
+         let selected = "DARKMATTER"
+         let tokenSelected = undefined
          setInterval(()=>{
+           updateCycleRewards
            updateUserAddy()
          }, 2000)
          async function updateUserAddy() {
@@ -613,6 +648,17 @@
            document.getElementById('user_addy').innerHTML = addy
            document.getElementById('user_addy2').innerHTML = addy
          }
+         async function updateCycleRewards(tokenSelected) {
+           stakeHandlerInstance = await tronWeb.contract().at(tokenSelected.stakeHandlerAddress)
+           const total = await stakeHandlerInstance.calculateMyCurrentCycleRewards().call()
+           document.getElementById('token'+tokenSelected.num).setAttribute('data-payout', roundToTwoOrFour(parseFloat(total._hex, 16)/tokenSelected.decimals))
+         }
+         $('#click-left').click(function(err) {
+            selected = document.getElementById('arrow-left').innerHTML.replace(' ', '').toUpperCase()
+         })
+         $('#click-right').click(function(err) {
+            selected = document.getElementById('arrow-right').innerHTML.replace(' ', '').toUpperCase()
+         })
        })
     </script>
 
