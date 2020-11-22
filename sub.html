@@ -747,10 +747,10 @@ $(document).ready(function() {
       darkmatterContract = await tronWeb.contract().at(config_json['DARKMATTER'].stakeHandlerAddress)
       voidContract = await tronWeb.contract().at(config_json['VOID'].stakeHandlerAddress)
       fragContract = await tronWeb.contract().at(config_json['FRAG'].stakeHandlerAddress)
-      const totalLight = await stakeHandlerInstance.calculateMyRewardsSinceLastClaim().call()
-      const totalDark = await stakeHandlerInstance.calculateMyRewardsSinceLastClaim().call()
-      const totalVoid = await stakeHandlerInstance.calculateMyRewardsSinceLastClaim().call()
-      const totalFrag = await stakeHandlerInstance.calculateMyRewardsSinceLastClaim().call()
+      const totalLight = await stakeHandlerInstance.reservedPot().call()
+      const totalDark = await stakeHandlerInstance.reservedPot().call()
+      const totalVoid = await stakeHandlerInstance.reservedPot().call()
+      const totalFrag = await stakeHandlerInstance.reservedPot().call()
       document.getElementById('lmh-total').innerHTML = roundToTwoOrFour(parseFloat(totalLight._hex, 16)/config_json['LIGHTMATTER'].decimals)
       document.getElementById('dmd-total').innerHTML = roundToTwoOrFour(parseFloat(totalDark._hex, 16)/config_json['DARKMATTER'].decimals)
       document.getElementById('void-total').innerHTML = roundToTwoOrFour(parseFloat(totalVoid._hex, 16)/config_json['VOID'].decimals)
@@ -859,16 +859,16 @@ function line1(){
      ctx.beginPath();
      var x=0; var y=0;
      var first=true;
-     for (x=0; x<=800 && (x <= slider.value); x+=3){     
+     for (x=0; x<=800 && (x <= slider.value); x+=3){
          y= getY(x);
          if(first){ ctx.moveTo(x,y); first=false;}
          ctx.lineTo(x, y);
-     } 
+     }
      ctx.stroke();
      ctx.closePath();
      newSprite(x, y)
    }
-   function newSprite(mvx, mvy) {   
+   function newSprite(mvx, mvy) {
        ctx.beginPath();
        var grd = ctx.createLinearGradient(0, 0, 170, 0);
        grd.addColorStop(0, "#fff");
@@ -906,7 +906,7 @@ function line1(){
                },10*x)
            }
        },500)
-       
+
    }
    animationline();
 }
@@ -941,16 +941,16 @@ function line2(){
      ctx.beginPath();
      var x=0; var y=0;
      var first=true;
-     for (x=0; x<=800 && (x <= slider.value); x+=3){     
+     for (x=0; x<=800 && (x <= slider.value); x+=3){
          y= getY(x);
          if(first){ ctx.moveTo(x,y); first=false;}
          ctx.lineTo(x, y);
-     } 
+     }
      ctx.stroke();
      ctx.closePath();
      newSprite(x, y)
    }
-   function newSprite(mvx, mvy) {   
+   function newSprite(mvx, mvy) {
        ctx.beginPath();
        var grd = ctx.createLinearGradient(0, 0, 170, 0);
        grd.addColorStop(0, "#fff");
@@ -988,7 +988,7 @@ function line2(){
                },10*x)
            }
        },500)
-       
+
    }
    animationline();
 }
