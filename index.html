@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,11 +100,11 @@
                         <div class="main-counter">
                            <div>
                               <h4 class="detail-head">VOID</h4>
-                              <p>Expected Payout: <!-- <span id="defaultCountdown"></span> --> <span id="estimated-payout"></span><span>TRX</span></p>
+                              <p>Expected Payout: <!-- <span id="defaultCountdown"></span> --> <span id="estimated-payout"></span><span></span></p>
                               <p class="build-text">
                                 Dark Matter is a decentralised open sorce Div payout platform for ll as once leaveing or unstakeing from stake, 20% will be used to feedback into the contract. this will ensure a longterm life for stakers and payouts.
                               </p>
-                              <a href="sub.html" class="btn-main">GO TO STAKE PAGE</a>
+                              <a href="sub.html" class="btn-main">GO TO SUBPAGE</a>
                            </div>
                            <!-- <div class="btn-done-outer"> <a href="#" class="btn-done">build <strong>133 TRX</strong></a></div> -->
                         </div>
@@ -601,65 +602,101 @@
     <script src="js/jquery.plugin.min.js"></script>
     <script src="js/jquery.countdown.js"></script>
     <script>
-       $(function () {
-           $('#defaultCountdown').countdown({layout: '{hnn}h {mnn}m {snn}s', until: "+3h +38m +15s", format: 'HMS'});
-       });
-       $(document).ready(()=>{
-         const config_json = {
-         /*  LIGHTMATTER: {
-             num:1,
-             tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
-             stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
-             stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
-             decimals: 1e6,
-           },*/
-           DARKMATTER: {
-             num:2,
-             tokenAddress: 'TXhv2baQ2q3TWerrwBiXjj27js9QocJFU9',
-             stakeDataAddress: 'TVMUd5yT9ZgxfCKm9dvKG3jmFAXYsMvyon',
-             stakeHandlerAddress: 'TD1sKYdUHKnR1V3UeVXxUB7QbD1mHTMkJG',
-             decimals: 1e6,
-           },
-           /*VOID: {
-             num:3,
-             tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
-             stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
-             stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
-             decimals: 1e6,
-           },
-           FRAG: {
-             num:4,
-             tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
-             stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
-             stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
-             decimals: 1e6,
-           },
-           */
-         }
-         let selected = "DARKMATTER"
-         let tokenSelected = undefined
-         setInterval(()=>{
-           updateCycleRewards
-           updateUserAddy()
-         }, 2000)
-         async function updateUserAddy() {
-           if(!tronWeb.defaultAddress.base58) return
-           const addy = tronWeb.defaultAddress.base58.slice(0,6) +'...'+ tronWeb.defaultAddress.base58.slice(tronWeb.defaultAddress.base58.length-6,tronWeb.defaultAddress.base58.length)
-           document.getElementById('user_addy').innerHTML = addy
-           document.getElementById('user_addy2').innerHTML = addy
-         }
-         async function updateCycleRewards(tokenSelected) {
-           stakeHandlerInstance = await tronWeb.contract().at(tokenSelected.stakeHandlerAddress)
-           const total = await stakeHandlerInstance.calculateMyCurrentCycleRewards().call()
-           document.getElementById('token'+tokenSelected.num).setAttribute('data-payout', roundToTwoOrFour(parseFloat(total._hex, 16)/tokenSelected.decimals))
-         }
-         $('#click-left').click(function(err) {
-            selected = document.getElementById('arrow-left').innerHTML.replace(' ', '').toUpperCase()
-         })
-         $('#click-right').click(function(err) {
-            selected = document.getElementById('arrow-right').innerHTML.replace(' ', '').toUpperCase()
-         })
-       })
+    $(function () {
+        $('#defaultCountdown').countdown({layout: '{hnn}h {mnn}m {snn}s', until: "+3h +38m +15s", format: 'HMS'});
+    });
+    $(document).ready(()=>{
+      const config_json = {
+      /*  LIGHTMATTER: {
+          num:1,
+          tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
+          stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
+          stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
+          decimals: 1e6,
+          symbol: 'LMH'
+        },*/
+        DARKMATTER: {
+          num:2,
+          tokenAddress: 'TXhv2baQ2q3TWerrwBiXjj27js9QocJFU9',
+          stakeDataAddress: 'TVMUd5yT9ZgxfCKm9dvKG3jmFAXYsMvyon',
+          stakeHandlerAddress: 'TD1sKYdUHKnR1V3UeVXxUB7QbD1mHTMkJG',
+          decimals: 1e6,
+          symbol: 'DMD'
+        },
+        /*VOID: {
+          num:3,
+          tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
+          stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
+          stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
+          decimals: 1e6,
+          symbol: 'VOID'
+        },
+        FRAG: {
+          num:4,
+          tokenAddress: 'TUKhG4PsgEsL7xEk42eHaDQPDrnzZsTNqo',
+          stakeDataAddress: 'TArgTK9v9ztc6hxpawj921xSjRvGPppd4g',
+          stakeHandlerAddress: 'TJz7aVd1LNfprpxW39XGskXdj262vFfZbG',
+          decimals: 1e6,
+          symbol: 'FRAG'
+        },
+        */
+      }
+      //rounding functions
+      function parseFloat(str, radix) {
+        let parts = str.split(".");
+        if ( parts.length > 1 ) {
+          return parseInt(parts[0], radix) + parseInt(parts[1], radix) / Math.pow(radix, parts[1].length);
+        }
+        return parseInt(parts[0], radix);
+      }
+
+      function roundToFour(num) {
+        return +(Math.floor(num + 'e+4') + 'e-4')
+      }
+
+      function roundToTwo(num) {
+        return +(Math.floor(num + 'e+2') + 'e-2')
+      }
+
+      function round(num) {
+        return +(Math.floor(num + 'e+0') + 'e-0')
+      }
+
+      function roundToTwoOrFour(num){
+        if(num<1) return roundToFour(num)
+        return roundToTwo(num)
+      }
+      let selected = "DARKMATTER"
+      let tokenSelected = undefined
+      const forceLoad = setInterval(()=>{
+        if(tronWeb){
+          updateCycleRewards(config_json["DARKMATTER"])
+          clearInterval(forceLoad)
+       }
+      },500)
+      setInterval(()=>{
+        tokenSelected = config_json[selected]
+        updateCycleRewards(tokenSelected)
+        updateUserAddy()
+      }, 2000)
+      async function updateUserAddy() {
+        if(!tronWeb.defaultAddress.base58) return
+        const addy = tronWeb.defaultAddress.base58.slice(0,6) +'...'+ tronWeb.defaultAddress.base58.slice(tronWeb.defaultAddress.base58.length-6,tronWeb.defaultAddress.base58.length)
+        document.getElementById('user_addy').innerHTML = addy
+        document.getElementById('user_addy2').innerHTML = addy
+      }
+      async function updateCycleRewards(tokenSelected) {
+        stakeHandlerInstance = await tronWeb.contract().at(tokenSelected.stakeHandlerAddress)
+        const total = await stakeHandlerInstance.reservedPot().call()
+        document.getElementById('token'+tokenSelected.num).setAttribute('data-payout', roundToTwoOrFour(parseFloat(total._hex, 16)/tokenSelected.decimals) + " " + tokenSelected.symbol)
+      }
+      $('#click-left').click(function(err) {
+         selected = document.getElementById('arrow-left').innerHTML.replace(' ', '').toUpperCase()
+      })
+      $('#click-right').click(function(err) {
+         selected = document.getElementById('arrow-right').innerHTML.replace(' ', '').toUpperCase()
+      })
+    })
     </script>
 
 
