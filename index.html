@@ -351,7 +351,7 @@
                         <li><a href="#">TOKEN</a></li>
                     </ul>
                     <ul class="navbar-nav nav-right">
-                        <li class="footer-btn">>
+                        <li class="footer-btn">
                             <a href="#" class="btn-main" id="user_addy2">Login Tronlink</a>
                         </li>
                     </ul>
@@ -650,6 +650,15 @@
         return parseInt(parts[0], radix);
       }
 
+      function abbreviateNumber(num)
+      {
+        if(num >= 1000000)
+          return roundToTwoOrFour(num/1000000)+'M';
+        if(num >= 1000)
+          return roundToTwoOrFour(num/1000)+'k';
+        return roundToTwoOrFour(num);
+      }
+
       function roundToFour(num) {
         return +(Math.floor(num + 'e+4') + 'e-4')
       }
@@ -681,7 +690,9 @@
       }, 2000)
       async function updateUserAddy() {
         if(!tronWeb.defaultAddress.base58) return
-        const addy = tronWeb.defaultAddress.base58.slice(0,6) +'...'+ tronWeb.defaultAddress.base58.slice(tronWeb.defaultAddress.base58.length-6,tronWeb.defaultAddress.base58.length)
+        let bal = await tronWeb.contract().at('TXhv2baQ2q3TWerrwBiXjj27js9QocJFU9')
+        bal = await bal.balanceOf(tronWeb.defaultAddress.base58).call()
+        const addy = tronWeb.defaultAddress.base58.slice(0,5) +'... '+ abbreviateNumber(parseInt(bal._hex,16)/1e6) + ' DMD'
         document.getElementById('user_addy').innerHTML = addy
         document.getElementById('user_addy2').innerHTML = addy
       }
