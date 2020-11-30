@@ -146,7 +146,7 @@
        <div class="container">
            <div class="categoreis-wrapper">
                <div class="ps-carousel" id="category-slider">
-                   <div class="items" data-id=1>
+                   <div class="items two-cl" data-id=1>
                        <div class="category-block">
                            <div class="cat-img">
                                 <img src="images/shape/cat-img.png" alt="cat-img">
@@ -584,11 +584,34 @@
         slider.scrollLeft = scrollLeft - walk;
         console.log(walk);
       });
+       slider.addEventListener('touchmove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1; //scroll-fast
+        slider.scrollLeft = scrollLeft - walk;
+        console.log(walk);
+      });
+        slider.addEventListener('touchstart', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+      slider.addEventListener('touchend', () => {
+        isDown = false;
+        slider.classList.remove('active');
+      });
+      slider.addEventListener('touchend', () => {
+        isDown = false;
+        slider.classList.remove('active');
+      });
     </script>
 
 
     <script type="text/javascript">
       $(function () {
+        var tempwidth =  $('.two-cl .cat-img').css("width")
           $('.ps-carousel').css("width",5*500)
             //toggle two classes on button element
             $('.ps-carousel .items').on('mouseover',function () {
