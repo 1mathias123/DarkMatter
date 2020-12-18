@@ -1380,3 +1380,237 @@ footer{
   margin-bottom: 20px !important;
   display: block;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gift_box{
+  margin: auto;
+  position: relative;
+  transform: translateY(-50%);
+  margin-bottom: -40px;
+  height: 90px;
+  width: auto;
+ 
+}
+
+.gift_body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh
+}
+
+.gift_sec{
+  
+  margin-top:250px;
+
+}
+.gift_top{
+  position: relative;  
+}
+.gift_bottom{
+  padding: 0px 30px 30px
+}
+.gift_top::before{
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(0deg, rgba(57, 208, 255, 0.58) 0%, rgba(82, 182, 255, 0.08) 100%);
+opacity: 0.23;
+border-radius: 5px;
+z-index: -1
+}
+.gift_sec_outer{
+   max-width: 95%;
+  margin: auto;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.gift_sec_outer::before{
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0
+  bottom::0;
+  background: linear-gradient(0deg, rgba(57, 208, 255, 0.58) 0%, rgba(82, 182, 255, 0.08) 100%);
+opacity: 0.23;
+border-radius: 5px;
+z-index: -1
+}
+.gift_sec_outer_abt{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 45px 0
+}
+.gift_sec_outer_abt p{
+  color: #84D5FF;
+  font-size: 12px !important;
+  margin-bottom: 6px
+}
+.gift_sec_outer_abt h4{
+  display: inline;
+  margin-bottom: 0;
+  margin-right: 6px;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+}
+
+.gift_sec_outer_abt span{
+  color: rgba(132, 213, 255, 0.3);
+  font-size: 12px;
+  font-weight: 700
+}
+.gift_sec_timer{
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding-top: 30px;
+  border-top: 1px solid rgba(132, 213, 255, 0.1);
+  margin-top: 30px;
+  padding:30px 45px;
+}
+.gift_sec_timer span{
+  color: #84D5FF;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: -6px
+}
+
+.gift_sec_btime .single_row{
+   color: #84D5FF;
+  font-size: 12px !important;
+  margin-top: 30px
+}
+.gift_sec_btime .single_row span{
+   color: #fff;
+  font-size: 12px !important;
+  margin-bottom: 6px
+}
+.multiple_row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px !important
+}
+.ip_outer{
+  position: relative;
+  margin-top: 30px;
+
+}
+.ip_outer input{
+  border: 2px solid rgba(132, 213, 255, 0.1);
+  background: transparent;
+  border-radius: 2px;
+  font-size: 16px;
+  height: 40px
+}
+.ip_outer input::placeholder{
+  color: #fff;
+  font-size: 16px
+}
+.ip_outer span{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+   color: rgba(132, 213, 255, 0.3);
+  font-size: 12px;
+  font-weight: 700
+}
+.gift_sec_btime .btn-main{
+  width: 100%;
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 12px
+}
+.gift_sec_btime .btn-main span{
+  color: #84FFFF
+}
+.gift_sec_btime .btn-main-green span{
+  color: #F7FF4C
+}
+
+.gift_sec_btime .btn-main{
+  background-image: url(../images/shape/btn-bg-b.png);
+}
+
+.gift_sec_btime .btn-main::after{
+  background-image: url(../images/shape/btn-shape-b.png);
+}
+
+
+.btn-main-green{
+  background-image: url(../images/shape/btn-bg-g.png) !important;
+}
+
+.btn-main-green::after{
+  background-image: url(../images/shape/btn-shape-g.png) !important;
+}
+
+.balanceheading{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0 16px;
+  color: rgba(216, 255, 132, 1);
+  font-size: 14px
+}
+.gift_sec_balance{
+  position: relative;
+  border-top: 0
+}
+
+.gift_sec_balance::after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 30%;
+  background: rgba(132, 213, 255, 0.1);
+  height: 1px;
+  z-index: -1
+}
+
+.gift_sec_balance::before{
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 30%;
+  background: rgba(132, 213, 255, 0.1);
+  height: 1px;
+  z-index: -1
+}
+
+.gift_sec_balance .gift_sec_outer_abt{
+  width: 100%;
+  padding: 0
+}
